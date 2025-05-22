@@ -1,5 +1,20 @@
 # 2025-supabase-vercel-practice
 
+## Overview
+
+This project is a minimal full-stack demo using:
+- **Next.js** (React) for the frontend, hosted on Vercel
+- **Supabase** for the backend (Postgres database, API, and authentication)
+- Dummy data loaded into Supabase for demonstration
+- The frontend is live and directly connected to the Supabase database
+
+### Rapid Iteration
+- The project is set up for rapid prototyping: pushing changes to the `main` branch on GitHub will automatically trigger a redeploy on Vercel.
+- This means you can update the UI or logic, push to GitHub, and see your changes live within seconds—perfect for fast iteration and user demos.
+
+**Relevant Links:**
+- [Live Vercel App](https://2025-supabase-vercel-practice.vercel.app/)
+
 ## Available npm Commands
 
 - `npm install`
@@ -16,32 +31,3 @@
 
 - `npm run lint`
   - Run ESLint to check for code quality issues.
-
-## Architecture Overview
-
-This project is a minimal full-stack app using:
-- **Next.js** (React) for the frontend, hosted on Vercel
-- **Supabase** for the backend (Postgres database, API, and authentication)
-- The frontend communicates directly with Supabase using the public API keys
-
-**Relevant Links:**
-- [Supabase Project Dashboard](https://supabase.com/dashboard/project/nvmfgfbwbmalupiblcpf)
-- [Live Vercel App](https://2025-supabase-vercel-practice.vercel.app/)
-
-## Enabling RLS for SELECT and INSERT
-
-If Row Level Security (RLS) is enabled on your Supabase tables, you must add policies to allow anonymous access for development/testing. Example for the `companies` table:
-
-```sql
--- Allow anyone to select from companies
-CREATE POLICY "Allow select for all" ON companies
-  FOR SELECT
-  USING (true);
-
--- Allow anyone to insert into companies
-CREATE POLICY "Allow insert for all" ON companies
-  FOR INSERT
-  WITH CHECK (true);
-```
-
-For production, restrict these policies to authenticated users.
